@@ -53,20 +53,33 @@ for index, row in df.iterrows():
 
     # --------- رابط الصفحة ---------
     page_link = f"https://mosabkassar.github.io/pages/{serial}.html"
+    video_file = "video.mp4"  # ضع الفيديو داخل مجلد pages/assets/
+
 
     # --------- إنشاء صفحة HTML ---------
+   
     html_content = f"""
     <!DOCTYPE html>
     <html lang="ar" dir="rtl">
-    <head><meta charset="UTF-8"></head>
-    <body style="text-align:center;">
-      <h1>مرحباً {name}</h1>
-      <p>رقم الطاولة: {table} | عدد الأشخاص: {guests}</p>
+    <head>
+    <meta charset="UTF-8">
+    <title>دعوة {name}</title>
+    <style>
+      body {{ font-family: Arial, sans-serif; text-align: center; margin: 50px; background-color: #f9f9f9; }}
+      h1 {{ color: #333; }}
+      video {{ width: 80%; max-width: 600px; border: 3px solid #ccc; border-radius: 10px; }}
+    </style>
+    </head>
+    <body>
+    <h1>مرحباً {name}</h1>
+    <p>رقم الطاولة: {table} | عدد الأشخاص: {guests}</p>
+    <video controls>
+      <source src="{video_file}" type="video/mp4">
+      متصفحك لا يدعم عرض الفيديو.
+    </video>
     </body>
     </html>
     """
-    with open(f"pages/{serial}.html", "w", encoding="utf-8") as f:
-        f.write(html_content)
 
     # --------- إنشاء QR (بدون تكبير) ---------
     qr_info = qrcode.make(
