@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Keep .gitignore tracked
+!.gitignore
+
+# Do not ignore pages directory and its contents
+!pages/
+!pages/**
